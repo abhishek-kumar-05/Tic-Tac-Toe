@@ -1,9 +1,16 @@
+import Herosection from "./components/Herosection";
+import "./App.css";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">hello welcome to react</header>
-    </div>
-  );
+    <>
+      <div className="App">
+        <Herosection />
+      </div>
+    </>
+  )
 }
+
+
 
 export default App;
