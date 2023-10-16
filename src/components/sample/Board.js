@@ -1,18 +1,14 @@
 import Box from "./Box";
-// import { useState } from "react";
+// creating board component function and receiving props from game component
+const Board = ({ xIsNext, squares, onPlay, onReset }) => {
 
-const Board = ({ xIsNext, squares, onPlay }) => {
-  // const [xisNext, setXIsNext] = useState(true);
-  // const [square, setSquare] = useState(Array(9).fill(null));
-  function Reset() {
-    const empty = Array(9).fill(null);
-    onPlay(empty);
-  }
-
+  // updating the box 
   function handleClick(i) {
+    // checking if box is alreday been clicked or the result is shown 
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
+    // if not then updating the box value 
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
@@ -20,9 +16,14 @@ const Board = ({ xIsNext, squares, onPlay }) => {
       nextSquares[i] = "O";
     }
     onPlay(nextSquares);
-    // setXIsNext(!xisNext);
   }
 
+   function resetGame() {
+     // Call the reset callback from the Game component
+     onReset();
+   }
+
+  //  checking the winner 
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -33,9 +34,12 @@ const Board = ({ xIsNext, squares, onPlay }) => {
   return (
     <>
       <div className="info">
-        <div className="status">{status}</div>
-        <div className="reset">
-          <button onClick={Reset}>Reset</button>
+        <div className="status">
+          <h2>{status}</h2>
+        </div>
+        <div>
+          {/* Render the board and boxes */}
+          <button onClick={resetGame}>Reset</button>
         </div>
       </div>
       <div className="board">

@@ -11,9 +11,11 @@
   display: flex;
   justify-content: space-between;
   margin: 0px 20px;
-}
-.status {
   margin-bottom: 20px;
+}
+.info button {
+  height: 2rem;
+  width: 3rem;
 }
 .board {
   display: flex;
